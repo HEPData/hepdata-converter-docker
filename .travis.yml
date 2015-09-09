@@ -1,0 +1,29 @@
+language: python
+
+python:
+  - "2.7"
+
+sudo: required
+
+env:
+  global:
+    - IMAGE_NAME=hepdata-converter 
+    - IMAGE_NAME_REMOTE=hepdata/hepdata-converter
+    - secure: "IL013XQDxkxnHO8p7iiB2lH1VH8lFfVq88LHzO24KMC5AosOREaHuJj5LK5GrVH+hEvi1SMOajjdGefld7TTQl4IZt4v5Pz2Mh/suin5AZCnxmKIQ7xenw0JafVzi7aNEciX8uz7IcFWZciDxq3lK907ZgrHYy1YZtRutBsk1gk5ZYv3WI6CV2A5nRlYEjVyPy1KIXBckl/RO3AM0CqwQ91vMvOYUHRdxrAmsoLWXthovsaoSBpPm8+JyOqtSjUo7qzyPPdQ9XWjtgnAu7wmO4XWxeIR54LigQ24xb2xEs++sAfXL8hZFZtSmp8CawpNT3w+fjRD+rUW58JhnIraA+aCthp7tPtO6ddC0fUcVtNZ/rUDzSBZmIlyiRJyH+TbP02AHlgpYHgQ44N4uJ7orV0kosv3rPgloVkGC9Rna/lwhsMgX/1T54DzrcGn+weoe1fTQvJNZXVws3cyb++A7/3oYPqE7OrJWPmqu0kpH8WWzL2ICCBfLubZeSWKflaGFdjHW8kYiLg8JY2lGotUXK9e/MqxUgItuphRbcdS0ETLmoIdlKls88gvLo7zIeIXSWbZlwjwXEu28e9tbKja7RWOWeawwraRDijv4+X5irdz7CNRthhaVwRywlJ8xYCUbz8aGZtEtvVTVSsXzfa2Xd26imOcUMLM5eSuJkp9J5U="
+    - secure: "KCMoUVECRuuvGXxBXLkgScbTLU+F5GSRSf3sVYLUhi8A6InFHeKuLHZOVXbtBAlMdue9cKm3V/X73zq8fDvs4zpIZ662fD7P1Yn87ADXpMvWdjdY48oHPESOmZcS7IhUiteQXtIPCvphJTqyATBr9r8R0skn1Hfiv8xuOQImiNnstv1louW6fJeRG3cSfYhWp2rY7st2Ikuk5LkmEbZh7Ag3aRLpFZLXZ8UR+ltqc8RIwv3/neXIl9287p7ONbSQpDP5TdssYUUniLnw6vom1sjulOpDAkglWJLCHx9fP5rf9o8hV6rcn5uGVVumRb5N7N0IJ+igVMfoXbViQCzLgkMo22jbsoPtz+Rpt4FxWRojfDHnBlKXOZl+mGtjfdnHs6P0J41YXB9XeyTqRBHIYQk6U0nu+VKO8E7AEWuOiYO9403kv51VeQXo+UuDhSkhFlr+8fBhfhZnJfueiaryyMcvnELesg27j7Q0xdVIiIOouBtqp2NfnrsOpGyCooXmYni6Mugy5iwWD8i37WcAAw3qXy+wqWp9AMSxXD4ZWLDdNKbw6EyDTpWi+uyeyb8nJ+ZIW9rcLtOrfRtMgvZuyQ1NwfJp1aaw68Udc31ZM+Mlxc0Z5y3MOrr11m4+l+6iAwnoTg8D6o0QFBok4amgjY59dxoCrCb+AnB5cZ6eRB4="
+    - secure: "ferH4ONe8KP9FrUadCZajT0v75ROS7pVGlSIf2P38FcyALgjbe0ESHoonZJcOFKXZqpVfpIdWV+MGB9DYNgNqcz39PdN3wmn8iQGy1TDGD/kMG35F+Ylq2Gp6RT22PefTjAy6EFI7cjvTRyBZqb/ou1hB5Vb2qmTmczysPRmt0fzGVWPo7md31FsUTuYnxkCQZssBHlVEg7pMYfmxTIQ27XicvXijREEgmWVQtk/T5B1o7x8dc/cBemyhulg8v61Lm/Hi3SwhsAT5FPwBJCvXNfswTb+CYCc9m1DR/YT+eX1mIW5VlRa4JFtunCm5OTTb2E9z3TgwSbBZLgli7at5B+TMU8RecKP2n6AoLuHuVCLuyWvEezdFkQxd+VeTmcxJ+5aMj+SOVJzx42gGTQVG08f7RWUJiNwVM1oGq2apACmfBnJ5XufvB6OItoleifDhyNtFH+NNQ7CkV34VzS2IzjiLxSzneJ7+i1wFAnaXnn+vg/+cMAJAi/UtcY34cTuh4xKlKyVNDDJLn7gsQ2CjqlBeaE0P/SloUnldAZExd0l02JfIMJ6vumDzxd5BDylIEjASson9rJlCFS2jtH+miL43/PZnfH1PO7yzofTrSCJljvRk22WAI7v4AKWizRuqdJ8v1LksOeAZrnvHfPRSsklmJWVFlwp7e/hllX1qq8="
+
+cache:
+  - docker
+
+services:
+  - docker
+
+install:
+  - echo 'creating hepdata-converter image...'
+
+script:
+  - "docker build -t $IMAGE_NAME ."
+  - "docker tag -f $IMAGE_NAME $IMAGE_NAME_REMOTE:latest"
+  - "docker login --password=$DOCKER_PASSWORD --email=$DOCKER_EMAIL --username=$DOCKER_USERNAME"
+  - "docker push $IMAGE_NAME_REMOTE:latest"
