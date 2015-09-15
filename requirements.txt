@@ -2,7 +2,7 @@ hepdata_validator
 coverage
 coveralls
 pyyaml
-pytest-cov
 rootpy
 numpy
-matplotlib
+matplotlib,
+six>=1.7
