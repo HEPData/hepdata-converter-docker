@@ -4,5 +4,5 @@ coveralls
 pyyaml
 rootpy
 numpy
-matplotlib,
+matplotlib
 six>=1.7
