@@ -1,5 +1,5 @@
 hepdata_validator
-coverage
+coverage==3.7
 coveralls
 pyyaml
 rootpy
