@@ -23,7 +23,8 @@ python-pip \
 # required by matplotlib
 libfreetype6-dev \
 pkg-config \
-libpng12-dev
+libpng12-dev \
+libyaml
 
 RUN cd /tmp && wget http://www.hepforge.org/archive/yoda/YODA-1.5.8.tar.gz && tar -xzf YODA-1.5.8.tar.gz && cd YODA-1.5.8 && ./configure && make -j4 && sudo make install && cd ..
 
