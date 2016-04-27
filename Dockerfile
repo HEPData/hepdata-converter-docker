@@ -24,7 +24,7 @@ libpng12-dev \
 libyaml-dev
 
 RUN cd / && wget https://root.cern.ch/download/root_v6.06.02.Linux-ubuntu14-x86_64-gcc4.8.tar.gz && tar -xvf root_v6.06.02.Linux-ubuntu14-x86_64-gcc4.8.tar.gz
-RUN . /root/bin/thisroot.sh
+RUN /bin/bash -c ". /root/bin/thisroot.sh"
 
 RUN cd /tmp && wget http://www.hepforge.org/archive/yoda/YODA-1.6.0.tar.gz && tar -xzf YODA-1.6.0.tar.gz && cd YODA-1.6.0 && ./configure && make -j4 && sudo make install && cd ..
 
