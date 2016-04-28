@@ -5,6 +5,9 @@ ENV ROOTSYS /root
 ENV LD_LIBRARY_PATH /usr/lib/python2.7/dist-packages/:/usr/local/lib:/usr/local/lib/python2.7/site-packages/yoda:/root/lib:$LD_LIBRARY_PATH
 ENV PYTHONPATH /usr/lib/python2.7/dist-packages/:/usr/local/lib:/usr/local/lib/python2.7/site-packages:/root/lib:$PYTHONPATH
 
+ENV ROOT_BINARY root_v6.06.02.Linux-ubuntu14-x86_64-gcc4.8.tar.gz
+ENV YODA_VERSION 1.6.0
+
 COPY requirements.txt /tmp/requirements.txt
 
 RUN apt-get -y update && apt-get install -y \
@@ -24,9 +27,9 @@ pkg-config \
 libpng12-dev \
 libyaml-dev
 
-RUN cd / && wget https://root.cern.ch/download/root_v6.06.02.Linux-ubuntu14-x86_64-gcc4.8.tar.gz && tar -xvf root_v6.06.02.Linux-ubuntu14-x86_64-gcc4.8.tar.gz
+RUN cd / && wget https://root.cern.ch/download/$ROOT_BINARY && tar -xzf $ROOT_BINARY
 
-RUN cd /tmp && wget http://www.hepforge.org/archive/yoda/YODA-1.6.0.tar.gz && tar -xzf YODA-1.6.0.tar.gz && cd YODA-1.6.0 && ./configure && make -j4 && sudo make install && cd ..
+RUN cd /tmp && wget http://www.hepforge.org/archive/yoda/YODA-$YODA_VERSION.tar.gz && tar -xzf YODA-$YODA_VERSION.tar.gz && cd YODA-$YODA_VERSION && ./configure && make -j4 && sudo make install && cd ..
 
 RUN pip install --upgrade pip
 
