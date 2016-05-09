@@ -2,7 +2,5 @@ hepdata_validator
 coverage==3.7
 coveralls
 pyyaml
-rootpy
-numpy
 matplotlib
 six>=1.7
