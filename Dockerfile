@@ -6,7 +6,7 @@ ENV LD_LIBRARY_PATH /usr/lib/python2.7/dist-packages/:/usr/local/lib:/usr/local/
 ENV PYTHONPATH /usr/lib/python2.7/dist-packages/:/usr/local/lib:/usr/local/lib/python2.7/site-packages:/root/lib:$PYTHONPATH
 
 ENV ROOT_BINARY root_v6.06.06.Linux-ubuntu14-x86_64-gcc4.8.tar.gz
-ENV YODA_VERSION 1.6.2
+ENV YODA_VERSION 1.6.3
 
 COPY requirements.txt /tmp/requirements.txt
 
