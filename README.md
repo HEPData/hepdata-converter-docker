@@ -19,7 +19,7 @@ The basic workflow is as follows:
 3. Push the code
 4. Travis will create docker image from Dockerfile and upload it to dockerhub
 
-##For developers
+## For developers
 
 This file contains file requirements.txt, it is here on purpose, it should not be duplicated
 in hepdata-converter repository. Also Travis already has dockerhub credentials for
