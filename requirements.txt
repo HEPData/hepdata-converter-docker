@@ -1,6 +1,6 @@
 hepdata-validator
-coverage
-coveralls
-pyyaml
-matplotlib
-six>=1.7
+coverage==5.0.3
+coveralls==1.11.1
+pyyaml==5.3
+matplotlib==2.2.5
+six==1.14.0
