@@ -1,6 +1,4 @@
 
-sudo: required
-
 services:
   - docker
 
@@ -25,6 +23,10 @@ install:
 
 script:
   - "docker build -t $IMAGE_NAME ."
-  - "docker tag $IMAGE_NAME $IMAGE_NAME_REMOTE:latest"
-  - "docker login --password=$DOCKER_PASSWORD --username=$DOCKER_USERNAME"
-  - "docker push $IMAGE_NAME_REMOTE:latest"
+
+after_success:
+    - test $TRAVIS_BRANCH == "master" && \
+        test $TRAVIS_PULL_REQUEST == false && \
+        "docker tag $IMAGE_NAME $IMAGE_NAME_REMOTE:latest" & \
+        "docker login --password=$DOCKER_PASSWORD --username=$DOCKER_USERNAME" && \
+        "docker push $IMAGE_NAME_REMOTE:latest"
