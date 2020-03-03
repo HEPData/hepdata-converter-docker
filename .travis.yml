@@ -31,6 +31,6 @@ deploy:
           "docker login --password=$DOCKER_PASSWORD --username=$DOCKER_USERNAME" && \
           docker push $IMAGE_NAME_REMOTE:$TAG_NAME
   on:
-    repo: HEPData/hepdata-converter
+    repo: HEPData/hepdata-converter-docker
     all_branches: true
     condition: $TRAVIS_BRANCH == "master" || -n $TRAVIS_TAG
