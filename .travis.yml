@@ -24,9 +24,13 @@ install:
 script:
   - "docker build -t $IMAGE_NAME ."
 
-after_success:
-    - test $TRAVIS_BRANCH == "master" && \
-        test $TRAVIS_PULL_REQUEST == false && \
-        "docker tag $IMAGE_NAME $IMAGE_NAME_REMOTE:latest" & \
-        "docker login --password=$DOCKER_PASSWORD --username=$DOCKER_USERNAME" && \
-        "docker push $IMAGE_NAME_REMOTE:latest"
+deploy:
+  provider: script
+  script: TAG_NAME="${TRAVIS_TAG:-latest}" && \
+          docker tag $IMAGE_NAME $IMAGE_NAME_REMOTE:$TAG_NAME && \
+          "docker login --password=$DOCKER_PASSWORD --username=$DOCKER_USERNAME" && \
+          docker push $IMAGE_NAME_REMOTE:$TAG_NAME
+  on:
+    repo: HEPData/hepdata-converter
+    all_branches: true
+    condition: $TRAVIS_BRANCH == "master" || -n $TRAVIS_TAG
