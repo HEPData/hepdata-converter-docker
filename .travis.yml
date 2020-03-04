@@ -25,11 +25,9 @@ script:
   - "docker build -t $IMAGE_NAME ."
 
 deploy:
+  skip_cleanup: true
   provider: script
-  script: TAG_NAME="${TRAVIS_TAG:-latest}" && \
-          docker tag $IMAGE_NAME $IMAGE_NAME_REMOTE:$TAG_NAME && \
-          "docker login --password=$DOCKER_PASSWORD --username=$DOCKER_USERNAME" && \
-          docker push $IMAGE_NAME_REMOTE:$TAG_NAME
+  script: bash docker_push
   on:
     repo: HEPData/hepdata-converter-docker
     all_branches: true
