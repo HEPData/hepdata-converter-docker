@@ -21,11 +21,8 @@ pkg-config \
 libpng-dev \
 libyaml-dev
 
-RUN conda install -y cython git pip
+RUN /bin/bash -c "source /root/.bashrc && cd /tmp && wget -O YODA-$YODA_VERSION.tar.gz https://yoda.hepforge.org/downloads/?f=YODA-$YODA_VERSION.tar.gz && tar -xzf YODA-$YODA_VERSION.tar.gz && cd YODA-$YODA_VERSION && ./configure --with-zlib=/opt/conda --prefix=/opt/conda && make -j4 && make -j4 install && cd ../"
 
-RUN /bin/bash -c "source /root/.bashrc && cd /tmp && \
-wget -O YODA-$YODA_VERSION.tar.gz https://gitlab.com/hepcedar/yoda/-/archive/release-1-8/yoda-release-1-8.tar.gz && \
-tar -xzf YODA-$YODA_VERSION.tar.gz && cd /tmp/yoda-release-1-8 && autoreconf -i --include=/opt/conda && \
-./configure --with-zlib=/opt/conda --prefix=/opt/conda && make -j4 && make -j4 install && cd ../"
+RUN conda install git pip
 
 RUN pip install -r /tmp/requirements.txt && rm /tmp/requirements.txt
