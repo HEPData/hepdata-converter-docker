@@ -3,7 +3,7 @@ FROM rootproject/root-conda@sha256:c99817608cebcfa7041e00006edb3d5f10983674294c0
 ENV CC /opt/conda/bin/x86_64-conda_cos6-linux-gnu-cc
 ENV CXX /opt/conda/bin/x86_64-conda_cos6-linux-gnu-c++
 
-ENV YODA_VERSION 1.8.0
+ENV YODA_VERSION 1.8.2
 
 COPY requirements.txt /tmp/requirements.txt
 
