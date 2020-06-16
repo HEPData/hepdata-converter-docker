@@ -1,4 +1,4 @@
-hepdata-validator==0.2.1
+hepdata-validator==0.2.2
 coverage==5.0.3
 coveralls==1.11.1
 future==0.18.2
