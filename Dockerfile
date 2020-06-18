@@ -1,5 +1,5 @@
-# Based on ROOT project's conda image which uses python3. Fixed to a digest as their docker images aren't tagged
-FROM rootproject/root-conda@sha256:c99817608cebcfa7041e00006edb3d5f10983674294c03f180b635a19c2a06f5
+# Based on ROOT project's conda image which uses python3.7
+FROM rootproject/root-conda:6.20.00
 ENV CC /opt/conda/bin/x86_64-conda_cos6-linux-gnu-cc
 ENV CXX /opt/conda/bin/x86_64-conda_cos6-linux-gnu-c++
 
