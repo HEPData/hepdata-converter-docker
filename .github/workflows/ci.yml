@@ -17,7 +17,7 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag hepdata-converter:$(date +%s)
     - name: Deploy
-      if: contains(github.ref, 'master') || github.event_name == 'release'
+      if: contains(github.ref, 'github-actions') || github.event_name == 'release' # TODO: revert to master after testing
       env:
         CI_TAG: ${{ github.event.release.tag_name }}
         IMAGE_NAME: hepdata-converter
