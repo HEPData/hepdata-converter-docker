@@ -1,8 +1,8 @@
-name: Docker Image CI
+name: Continuous Integration
 
 on:
   push:
-    branches: [ master ]
+    branches: [ github-actions ]
   pull_request:
     branches: [ master ]
 
