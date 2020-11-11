@@ -16,3 +16,13 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag hepdata-converter:$(date +%s)
+    - name: Deploy
+      if: contains(github.ref, 'master') || github.event_name == 'release'
+      env:
+        CI_TAG: ${{ github.event.release.tag_name }}
+        IMAGE_NAME: hepdata-converter
+        IMAGE_NAME_REMOTE: hepdata/hepdata-converter
+        DOCKERHUB_USER: hepdata
+        DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+      run: |
+        bash docker_push
