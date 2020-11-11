@@ -22,7 +22,7 @@ jobs:
         CI_TAG: ${{ github.event.release.tag_name }}
         IMAGE_NAME: hepdata-converter
         IMAGE_NAME_REMOTE: hepdata/hepdata-converter
-        DOCKERHUB_USER: hepdata
-        DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USER }}
+        DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
       run: |
         bash docker_push
