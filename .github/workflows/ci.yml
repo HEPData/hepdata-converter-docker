@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag hepdata-converter:$(date +%s)
+      run: docker build . --file Dockerfile --tag hepdata-converter
     - name: Deploy
       if: contains(github.ref, 'github-actions') || github.event_name == 'release' # TODO: revert to master after testing
       env:
