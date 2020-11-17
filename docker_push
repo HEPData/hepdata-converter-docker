@@ -2,4 +2,4 @@
 TAG_NAME="${CI_TAG:-latest}"
 docker tag $IMAGE_NAME $IMAGE_NAME_REMOTE:$TAG_NAME
 echo "$DOCKERHUB_TOKEN" | docker login --username=$DOCKERHUB_USER --password-stdin
-# docker push $IMAGE_NAME_REMOTE:$TAG_NAME
+docker push $IMAGE_NAME_REMOTE:$TAG_NAME
