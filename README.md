@@ -1,5 +1,5 @@
 
-[![Build Status](https://travis-ci.org/HEPData/hepdata-converter-docker.svg?branch=master)](https://travis-ci.org/HEPData/hepdata-converter-docker)
+[![GitHub Actions Status](https://github.com/HEPData/hepdata-converter-docker/workflows/Continuous%20Integration/badge.svg?branch=master)](https://github.com/HEPData/hepdata-converter-docker/actions?query=branch%3Amaster)
 [![Docker Pulls](https://img.shields.io/docker/pulls/hepdata/hepdata-converter)](https://hub.docker.com/r/hepdata/hepdata-converter)
 
 # hepdata-converter-docker
