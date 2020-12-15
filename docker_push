@@ -1,5 +1,5 @@
 #!/bin/bash
-TAG_NAME="${TRAVIS_TAG:-latest}"
+TAG_NAME="${CI_TAG:-latest}"
 docker tag $IMAGE_NAME $IMAGE_NAME_REMOTE:$TAG_NAME
-echo "$DOCKER_PASSWORD" | docker login --username=$DOCKER_USERNAME --password-stdin
+echo "$DOCKERHUB_TOKEN" | docker login --username=$DOCKERHUB_USER --password-stdin
 docker push $IMAGE_NAME_REMOTE:$TAG_NAME

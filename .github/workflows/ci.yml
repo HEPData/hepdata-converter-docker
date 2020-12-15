@@ -1,0 +1,27 @@
+name: Continuous Integration
+
+on:
+  push:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag hepdata-converter
+    - name: Deploy
+      if: contains(github.ref, 'master') || github.event_name == 'release'
+      env:
+        CI_TAG: ${{ github.event.release.tag_name }}
+        IMAGE_NAME: hepdata-converter
+        IMAGE_NAME_REMOTE: hepdata/hepdata-converter
+        DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USER }}
+        DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+      run: |
+        bash docker_push
