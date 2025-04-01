@@ -1,5 +1,5 @@
 # Based on ROOT project's Ubuntu image which uses Python 3.12
-FROM rootproject/root:6.34.00-ubuntu24.10
+FROM rootproject/root:6.34.00-ubuntu24.04
 
 ENV YODA_VERSION 2.1.0
 
