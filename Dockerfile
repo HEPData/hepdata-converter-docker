@@ -1,7 +1,7 @@
-# Based on ROOT project's Ubuntu image which uses Python 3.10
-FROM rootproject/root:6.28.04-ubuntu22.04
+# Based on ROOT project's Ubuntu image which uses Python 3.12
+FROM rootproject/root:6.34.00-ubuntu24.10
 
-ENV YODA_VERSION 2.0.0alpha
+ENV YODA_VERSION 2.1.0
 
 RUN apt-get -y update && apt-get install -y \
 git \
