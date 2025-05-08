@@ -19,9 +19,10 @@ pkg-config \
 libpng-dev \
 libyaml-dev \
 # required by YODA-HDF5
-libhdf5-dev
+libhdf5-dev \
+cython3
 
-RUN /bin/bash -c "source /root/.bashrc && cd /tmp && wget -O YODA-$YODA_VERSION.tar.gz https://yoda.hepforge.org/downloads/?f=YODA-$YODA_VERSION.tar.gz && tar -xzf YODA-$YODA_VERSION.tar.gz && cd YODA-$YODA_VERSION && PYTHON=/usr/bin/python3 ./configure --disable-root && make -j4 && make -j4 install && cd ../"
+RUN /bin/bash -c "source /root/.bashrc && cd /tmp && wget -O YODA-$YODA_VERSION.tar.gz https://yoda.hepforge.org/downloads/?f=YODA-$YODA_VERSION.tar.gz && tar -xzf YODA-$YODA_VERSION.tar.gz && cd YODA-$YODA_VERSION && PYTHON=/usr/bin/python3 ./configure && make -j4 && make -j4 install && cd ../"
 
 RUN pip config set global.break-system-packages true
 
