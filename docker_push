@@ -3,3 +3,7 @@ TAG_NAME="${CI_TAG:-latest}"
 docker tag $IMAGE_NAME $IMAGE_NAME_REMOTE:$TAG_NAME
 echo "$DOCKERHUB_TOKEN" | docker login --username=$DOCKERHUB_USER --password-stdin
 docker push $IMAGE_NAME_REMOTE:$TAG_NAME
+if [ $TAG_NAME != "latest" ]; then
+  docker tag $IMAGE_NAME $IMAGE_NAME_REMOTE
+  docker push $IMAGE_NAME_REMOTE
+fi
