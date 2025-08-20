@@ -27,4 +27,4 @@ RUN /bin/bash -c "source /root/.bashrc && cd /tmp && wget -O YODA-$YODA_VERSION.
 RUN pip config set global.break-system-packages true
 
 ENV LD_LIBRARY_PATH=/usr/local/lib
-ENV PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3.12/site-packages
+ENV PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3.13/site-packages
